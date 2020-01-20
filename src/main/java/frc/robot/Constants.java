@@ -38,7 +38,7 @@ public final class Constants {
     public static final DifferentialDriveKinematics kDriveKinematics =
         new DifferentialDriveKinematics(kTrackwidthMeters);
 
-    public static final int kEncoderCPR = 2500;
+    public static final int kEncoderCPR = 2005;
     public static final double kWheelDiameterMeters = 0.152;
     public static final double kEncoderDistancePerPulse = 
         // Assumes the encoders are directly mounted on the wheel shafts
@@ -51,9 +51,9 @@ public final class Constants {
     // for *your* robot's drive.
     // The Robot Characterization Toolsuite provides a convenient tool for obtaining these
     // values for your robot.
-    public static final double ksVolts = 1.86;
-    public static final double kvVoltSecondsPerMeter = 0.134;
-    public static final double kaVoltSecondsSquaredPerMeter = 0.0274;
+    public static final double ksVolts = 1.73;
+    public static final double kvVoltSecondsPerMeter = 2.21;
+    public static final double kaVoltSecondsSquaredPerMeter = 0.0428;
 
     // Example value only - as above, this must be tuned for your drive!
     public static final double kPDriveVel = 8.5;

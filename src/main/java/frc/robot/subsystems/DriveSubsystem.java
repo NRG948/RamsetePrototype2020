@@ -63,7 +63,7 @@ public class DriveSubsystem extends SubsystemBase {
   public DriveSubsystem() {
     // Sets the distance per pulse for the encoders
     m_leftEncoder.setDistancePerPulse(DriveConstants.kEncoderDistancePerPulse);
-    m_leftEncoder.setReverseDirection(true);
+    m_leftEncoder.setReverseDirection(false);
     m_rightEncoder.setDistancePerPulse(DriveConstants.kEncoderDistancePerPulse);
     m_rightEncoder.setReverseDirection(true);
 
@@ -77,8 +77,16 @@ public class DriveSubsystem extends SubsystemBase {
   @Override
   public void periodic() {
     // Update the odometry in the periodic block
-    m_odometry.update(Rotation2d.fromDegrees(getHeading()), m_leftEncoder.getDistance(),
-                      m_rightEncoder.getDistance());
+    double leftDistance = m_leftEncoder.getDistance();
+    double rightDistance = m_rightEncoder.getDistance();
+    double heading = getHeading();
+    Pose2d position = m_odometry.update(Rotation2d.fromDegrees(heading), leftDistance,
+                      rightDistance);
+    SmartDashboard.putNumber("Drive/Left Encoder", leftDistance);
+    SmartDashboard.putNumber("Drive/Right Encoder", rightDistance);
+    SmartDashboard.putNumber("Drive/Heading", heading);
+    SmartDashboard.putString("Drive/CurrentPosition", position.toString());
+
   }
   
 
